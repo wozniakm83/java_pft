@@ -16,10 +16,7 @@ public class MyFirstProgram {
 
         System.out.println("Distance between point p1 and point p2 is:");
         System.out.println("|p1 p2| = ");
-        System.out.println(" = sqrt[(" + p2.x + " - " + p1.x + ")^2 + (" + p2.y + " - " + p1.y + ")^2]");
-        System.out.println(" = sqrt[(" + (p2.x - p1.x) + ")^2 + (" + (p2.y - p1.y) + ")^2]");
-        System.out.println(" = sqrt(" + Math.pow((p2.x - p1.x),2) + " + " + Math.pow((p2.y - p1.y),2) + ")");
-        System.out.println(" = sqrt(" + (Math.pow((p2.x - p1.x),2) + Math.pow((p2.y - p1.y),2)) + ")");
+        System.out.println(" = sqrt[(" + p2.x + " - " + p1.x + ")^2 + (" + p2.y + " - " + p1.y + ")^2] =");
         System.out.println(" = " + distance(p1, p2));
     }
 
