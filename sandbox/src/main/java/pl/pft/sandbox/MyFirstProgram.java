@@ -6,13 +6,13 @@ public class MyFirstProgram {
         hello("World");
         hello("Michal");
 
-        Point p1 = new Point();
-        p1.x = 2;
-        p1.y = 3;
+        double x1 = 2;
+        double y1 = 3;
+        double x2 = 1;
+        double y2 = 4;
 
-        Point p2 = new Point();
-        p2.x = 1;
-        p2.y = 4;
+        Point p1 = new Point(x1, y1);
+        Point p2 = new Point(x2, y2);
 
         System.out.println("Distance between point p1 and point p2 is:");
         System.out.println("|p1 p2| = ");
