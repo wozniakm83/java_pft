@@ -27,4 +27,25 @@ public class ContactHelper extends HelperBase {
     public void initContactCreation() {
         click(By.linkText("add new"));
     }
+
+    public void selectContact() {
+        click(By.name("selected[]"));
+    }
+
+    public void submitContactModification() {
+        wd.findElement(By.name("update")).click();
+    }
+
+    public void initContactModification() {
+        wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img")).click();
+    }
+
+    public void confirmContactDeletion() {
+        wd.switchTo().alert().accept();
+    }
+
+    public void submitContactDeletion() {
+        wd.findElement(By.xpath("//div[@id='content']/form[2]/div[2]/input")).click();
+    }
+
 }
