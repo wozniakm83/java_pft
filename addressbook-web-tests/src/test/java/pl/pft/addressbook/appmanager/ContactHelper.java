@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import pl.pft.addressbook.model.ContactData;
+import pl.pft.addressbook.model.GroupData;
 
 public class ContactHelper extends HelperBase {
 
