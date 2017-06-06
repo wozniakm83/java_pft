@@ -24,12 +24,4 @@ public class NavigationHelper extends HelperBase {
         }
         click(By.linkText("home"));
     }
-
-    public void returnToGroupPage() {
-        gotoGroupPage();
-    }
-
-    public void returnToHomePage() {
-        gotoHomePage();
-    }
 }

@@ -8,8 +8,12 @@ import pl.pft.addressbook.model.ContactData;
 
 public class ContactHelper extends HelperBase {
 
-    public ContactHelper(WebDriver wd) {
+    public ContactHelper(WebDriver wd)  {
         super(wd);
+    }
+
+    public void returnToHomePage() {
+        click(By.linkText("home"));
     }
 
     public void submitContactCreation() {
@@ -56,4 +60,14 @@ public class ContactHelper extends HelperBase {
         wd.findElement(By.xpath("//div[@id='content']/form[2]/div[2]/input")).click();
     }
 
+    public void createContact(ContactData contact, boolean creation) {
+        initContactCreation();
+        fillContactForm(contact, creation);
+        submitContactCreation();
+        returnToHomePage();
+    }
+
+    public boolean isThereAContact() {
+        return isElementPresent(By.name("selected[]"));
+    }
 }
