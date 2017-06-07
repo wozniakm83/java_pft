@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import pl.pft.addressbook.model.ContactData;
-import pl.pft.addressbook.model.GroupData;
 
 public class ContactHelper extends HelperBase {
 
@@ -14,11 +13,11 @@ public class ContactHelper extends HelperBase {
     }
 
     public void returnToHomePage() {
-        click(By.linkText("home"));
+        wd.findElement(By.linkText("home")).click();
     }
 
     public void submitContactCreation() {
-        click(By.xpath("//div[@id='content']/form/input[21]"));
+        wd.findElement(By.cssSelector("#content input[name='submit'][value='Enter']")).click();
     }
 
     public void fillContactForm(ContactData contactData, boolean creation) {
@@ -38,19 +37,19 @@ public class ContactHelper extends HelperBase {
     }
 
     public void initContactCreation() {
-        click(By.linkText("add new"));
+        wd.findElement(By.linkText("add new")).click();
     }
 
     public void selectContact() {
-        click(By.name("selected[]"));
+        wd.findElement(By.cssSelector("#maintable input[name='selected[]']")).click();
     }
 
     public void submitContactModification() {
-        wd.findElement(By.name("update")).click();
+        wd.findElement(By.cssSelector("#content input[name='update']")).click();
     }
 
     public void initContactModification() {
-        wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img")).click();
+        wd.findElement(By.cssSelector("#maintable img[title='Edit']")).click();
     }
 
     public void confirmContactDeletion() {
@@ -58,7 +57,7 @@ public class ContactHelper extends HelperBase {
     }
 
     public void submitContactDeletion() {
-        wd.findElement(By.xpath("//div[@id='content']/form[2]/div[2]/input")).click();
+        wd.findElement(By.cssSelector("#content input[type='button'][value='Delete']")).click();
     }
 
     public void createContact(ContactData contact, boolean creation) {
@@ -69,7 +68,7 @@ public class ContactHelper extends HelperBase {
     }
 
     public boolean isThereAContact() {
-        return isElementPresent(By.name("selected[]"));
+        return isElementPresent(By.cssSelector("#maintable input[name='selected[]']"));
     }
 
     public void createContactIfRequired(ContactData contact, boolean creation) {

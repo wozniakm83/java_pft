@@ -11,11 +11,11 @@ public class GroupHelper extends HelperBase {
     }
 
     public void returnToGroupPage() {
-        click(By.linkText("group page"));
+        wd.findElement(By.linkText("group page")).click();
     }
 
     public void submitGroupCreation() {
-        click(By.name("submit"));
+        wd.findElement(By.cssSelector("#content input[name='submit'][value='Enter information']")).click();
     }
 
     public void fillGroupForm(GroupData groupData) {
@@ -25,23 +25,23 @@ public class GroupHelper extends HelperBase {
     }
 
     public void initGroupCreation() {
-        click(By.name("new"));
+        wd.findElement(By.cssSelector("#content input[name='new'][value='New group']")).click();
     }
 
     public void deleteSelectedGroup() {
-        click(By.name("delete"));
+        wd.findElement(By.cssSelector("#content input[name='delete'][value='Delete group(s)']")).click();
     }
 
     public void selectGroup() {
-        click(By.name("selected[]"));
+        wd.findElement(By.cssSelector("#content input[name='selected[]']")).click();
     }
 
     public void initGroupModification() {
-        click(By.name("edit"));
+        wd.findElement(By.cssSelector("#content input[name='edit'][value='Edit group']")).click();
     }
 
     public void submitGroupModification() {
-        click(By.name("update"));
+        wd.findElement(By.cssSelector("#content input[name='update'][value='Update']")).click();
     }
 
     public void createGroup(GroupData group) {
@@ -52,7 +52,7 @@ public class GroupHelper extends HelperBase {
     }
 
     public boolean isThereAGroup() {
-        return isElementPresent(By.name("selected[]"));
+        return isElementPresent(By.cssSelector("#content input[name='selected[]']"));
     }
 
     public void createGroupIfRequired(GroupData group) {
