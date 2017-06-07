@@ -71,4 +71,11 @@ public class ContactHelper extends HelperBase {
     public boolean isThereAContact() {
         return isElementPresent(By.name("selected[]"));
     }
+
+    public void createContactIfRequired(ContactData contact, boolean creation) {
+        new NavigationHelper(wd).gotoHomePage();
+        if(! isThereAContact()) {
+            createContact(contact, creation);
+        }
+    }
 }
