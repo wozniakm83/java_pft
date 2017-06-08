@@ -2,7 +2,11 @@ package pl.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import pl.pft.addressbook.model.GroupData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GroupHelper extends HelperBase {
 
@@ -57,12 +61,23 @@ public class GroupHelper extends HelperBase {
 
     public void createGroupIfRequired(GroupData group) {
         new NavigationHelper(wd).gotoGroupPage();
-        if(! isThereAGroup()) {
+        if (!isThereAGroup()) {
             createGroup(group);
         }
     }
 
     public int getGroupCount() {
         return wd.findElements(By.cssSelector("#content input[name='selected[]']")).size();
+    }
+
+    public List<GroupData> getGroupList() {
+        List<GroupData> groups = new ArrayList<GroupData>();
+        List<WebElement> elements = wd.findElements(By.cssSelector("#content span.group"));
+        for (WebElement element : elements) {
+            String name = element.getText();
+            GroupData group = new GroupData(name, null, null);
+            groups.add(group);
+        }
+        return groups;
     }
 }
