@@ -32,8 +32,8 @@ public class GroupHelper extends HelperBase {
         wd.findElement(By.cssSelector("#content input[name='delete'][value='Delete group(s)']")).click();
     }
 
-    public void selectGroup() {
-        wd.findElement(By.cssSelector("#content input[name='selected[]']")).click();
+    public void selectGroup(int index) {
+        wd.findElements(By.cssSelector("#content input[name='selected[]']")).get(index).click();
     }
 
     public void initGroupModification() {
@@ -60,5 +60,9 @@ public class GroupHelper extends HelperBase {
         if(! isThereAGroup()) {
             createGroup(group);
         }
+    }
+
+    public int getGroupCount() {
+        return wd.findElements(By.cssSelector("#content input[name='selected[]']")).size();
     }
 }
