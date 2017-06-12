@@ -9,7 +9,7 @@ public class ContactData {
     private final String mobilePhone;
     private final String workPhone;
     private final String email;
-    private String group;
+    private final String group;
 
     public ContactData(String firstname, String lastname, String address, String homePhone, String mobilePhone, String workPhone, String email, String group) {
         this.id = Integer.MAX_VALUE;
@@ -80,7 +80,6 @@ public class ContactData {
                 "id=" + id +
                 ", firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
-                ", group='" + group + '\'' +
                 '}';
     }
 
