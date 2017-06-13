@@ -46,7 +46,7 @@ public class ContactHelper extends HelperBase {
     }
 
     public void selectContact(int index) {
-        wd.findElements(By.cssSelector("#maintable input[name='selected[]']")).get(index).click();
+        wd.findElements(By.cssSelector("input[name='selected[]']")).get(index).click();
     }
 
     public void submitContactModification() {
@@ -54,7 +54,7 @@ public class ContactHelper extends HelperBase {
     }
 
     public void initContactModification() {
-        wd.findElement(By.cssSelector("#maintable img[title='Edit']")).click();
+        wd.findElement(By.cssSelector("img[title='Edit']")).click();
     }
 
     public void confirmContactDeletion() {
@@ -85,7 +85,7 @@ public class ContactHelper extends HelperBase {
 
     public List<ContactData> getContactList() {
         List<ContactData> contacts = new ArrayList<ContactData>();
-        List<WebElement> elements = wd.findElements(By.cssSelector("#maintable tr[name='entry']"));
+        List<WebElement> elements = wd.findElements(By.cssSelector("tr[name='entry']"));
         for (WebElement element : elements) {
             String firstname = element.findElement(By.cssSelector("td:nth-child(3)")).getText();
             String lastname = element.findElement(By.cssSelector("td:nth-child(2)")).getText();
