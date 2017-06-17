@@ -6,7 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import pl.pft.addressbook.model.ContactData;
-import pl.pft.addressbook.model.GroupData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,7 +71,7 @@ public class ContactHelper extends HelperBase {
         returnToHomePage();
     }
 
-    public void modifyContact(int index, ContactData contact) {
+    public void modify(int index, ContactData contact) {
         selectContact(index);
         initContactModification();
         fillContactForm(contact, false);
@@ -80,7 +79,7 @@ public class ContactHelper extends HelperBase {
         returnToHomePage();
     }
 
-    public void deleteContact(int index) {
+    public void delete(int index) {
         selectContact(index);
         submitContactDeletion();
         confirmContactDeletion();
@@ -91,14 +90,14 @@ public class ContactHelper extends HelperBase {
         return isElementPresent(By.cssSelector("#maintable input[name='selected[]']"));
     }
 
-    public void createContactIfRequired(ContactData contact, boolean creation) {
-        new NavigationHelper(wd).gotoHomePage();
+    public void createIfRequired(ContactData contact, boolean creation) {
+        new NavigationHelper(wd).homePage();
         if(! isThereAContact()) {
             createContact(contact, creation);
         }
     }
 
-    public List<ContactData> getContactList() {
+    public List<ContactData> list() {
         List<ContactData> contacts = new ArrayList<ContactData>();
         List<WebElement> elements = wd.findElements(By.cssSelector("tr[name='entry']"));
         for (WebElement element : elements) {
