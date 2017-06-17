@@ -12,7 +12,7 @@ public class ContactCreationTests extends TestBase {
 
     @Test
     public void testContactCreation() {
-        app.group().createIfRequired(new GroupData("Test1", null, null));
+        app.group().createIfRequired(new GroupData().withName("Test1"));
         app.goTo().homePage();
         List<ContactData> before = app.contact().list();
         ContactData contact = new ContactData("firstname", "lastname", "address", "home", null, null, "email1@email.com", "Test1");

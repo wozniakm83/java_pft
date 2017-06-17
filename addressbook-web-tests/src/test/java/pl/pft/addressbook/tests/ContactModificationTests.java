@@ -13,7 +13,7 @@ public class ContactModificationTests extends TestBase {
 
     @BeforeMethod
     public void ensurePreconditions() {
-        app.group().createIfRequired(new GroupData("Test1", null, null));
+        app.group().createIfRequired(new GroupData().withName("Test1"));
         app.contact().createIfRequired(new ContactData("firstname", "lastname", "address", "home", null, null, "email1@email.com", "Test1"), true);
     }
 
