@@ -64,7 +64,7 @@ public class ContactHelper extends HelperBase {
         wd.findElement(By.cssSelector("#content input[type='button'][value='Delete']")).click();
     }
 
-    public void createContact(ContactData contact, boolean creation) {
+    public void create(ContactData contact, boolean creation) {
         initContactCreation();
         fillContactForm(contact, creation);
         submitContactCreation();
@@ -93,7 +93,7 @@ public class ContactHelper extends HelperBase {
     public void createIfRequired(ContactData contact, boolean creation) {
         new NavigationHelper(wd).homePage();
         if(! isThereAContact()) {
-            createContact(contact, creation);
+            create(contact, creation);
         }
     }
 
@@ -104,8 +104,7 @@ public class ContactHelper extends HelperBase {
             String firstname = element.findElement(By.cssSelector("td:nth-child(3)")).getText();
             String lastname = element.findElement(By.cssSelector("td:nth-child(2)")).getText();
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-            ContactData contact = new ContactData(id, firstname, lastname, null, null, null, null, null, null);
-            contacts.add(contact);
+            contacts.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname));
         }
         return contacts;
     }
