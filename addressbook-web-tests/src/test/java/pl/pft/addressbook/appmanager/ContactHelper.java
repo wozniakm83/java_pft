@@ -8,7 +8,9 @@ import org.testng.Assert;
 import pl.pft.addressbook.model.ContactData;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ContactHelper extends HelperBase {
 
@@ -48,6 +50,10 @@ public class ContactHelper extends HelperBase {
         wd.findElements(By.cssSelector("input[name='selected[]']")).get(index).click();
     }
 
+    public void selectContactById(int id) {
+        wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
+    }
+
     public void submitContactModification() {
         wd.findElement(By.cssSelector("#content input[name='update']")).click();
     }
@@ -79,8 +85,23 @@ public class ContactHelper extends HelperBase {
         returnToHomePage();
     }
 
+    public void modify(ContactData contact) {
+        selectContactById(contact.getId());
+        initContactModification();
+        fillContactForm(contact, false);
+        submitContactModification();
+        returnToHomePage();
+    }
+
     public void delete(int index) {
         selectContact(index);
+        submitContactDeletion();
+        confirmContactDeletion();
+        returnToHomePage();
+    }
+
+    public void delete(ContactData contact) {
+        selectContactById(contact.getId());
         submitContactDeletion();
         confirmContactDeletion();
         returnToHomePage();
@@ -99,6 +120,18 @@ public class ContactHelper extends HelperBase {
 
     public List<ContactData> list() {
         List<ContactData> contacts = new ArrayList<ContactData>();
+        List<WebElement> elements = wd.findElements(By.cssSelector("tr[name='entry']"));
+        for (WebElement element : elements) {
+            String firstname = element.findElement(By.cssSelector("td:nth-child(3)")).getText();
+            String lastname = element.findElement(By.cssSelector("td:nth-child(2)")).getText();
+            int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+            contacts.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname));
+        }
+        return contacts;
+    }
+
+    public Set<ContactData> all() {
+        Set<ContactData> contacts = new HashSet<ContactData>();
         List<WebElement> elements = wd.findElements(By.cssSelector("tr[name='entry']"));
         for (WebElement element : elements) {
             String firstname = element.findElement(By.cssSelector("td:nth-child(3)")).getText();
