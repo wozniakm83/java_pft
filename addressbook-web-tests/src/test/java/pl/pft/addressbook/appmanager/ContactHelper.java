@@ -8,7 +8,6 @@ import org.testng.Assert;
 import pl.pft.addressbook.model.ContactData;
 import pl.pft.addressbook.model.Contacts;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ContactHelper extends HelperBase {
@@ -45,10 +44,6 @@ public class ContactHelper extends HelperBase {
         wd.findElement(By.linkText("add new")).click();
     }
 
-    public void selectContact(int index) {
-        wd.findElements(By.cssSelector("input[name='selected[]']")).get(index).click();
-    }
-
     public void selectContactById(int id) {
         wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
     }
@@ -57,8 +52,9 @@ public class ContactHelper extends HelperBase {
         wd.findElement(By.cssSelector("#content input[name='update']")).click();
     }
 
-    public void initContactModification() {
-        wd.findElement(By.cssSelector("img[title='Edit']")).click();
+
+    public void initContactModificationById(int id) {
+        wd.findElement(By.cssSelector("a[href='edit.php?id=" + id + "']")).click();
     }
 
     public void confirmContactDeletion() {
@@ -77,28 +73,10 @@ public class ContactHelper extends HelperBase {
         returnToHomePage();
     }
 
-    public void modify(int index, ContactData contact) {
-        selectContact(index);
-        initContactModification();
-        fillContactForm(contact, false);
-        submitContactModification();
-        contactCache = null;
-        returnToHomePage();
-    }
-
     public void modify(ContactData contact) {
-        selectContactById(contact.getId());
-        initContactModification();
+        initContactModificationById(contact.getId());
         fillContactForm(contact, false);
         submitContactModification();
-        contactCache = null;
-        returnToHomePage();
-    }
-
-    public void delete(int index) {
-        selectContact(index);
-        submitContactDeletion();
-        confirmContactDeletion();
         contactCache = null;
         returnToHomePage();
     }
@@ -120,18 +98,6 @@ public class ContactHelper extends HelperBase {
         if(! isThereAContact()) {
             create(contact, creation);
         }
-    }
-
-    public List<ContactData> list() {
-        List<ContactData> contacts = new ArrayList<ContactData>();
-        List<WebElement> elements = wd.findElements(By.cssSelector("tr[name='entry']"));
-        for (WebElement element : elements) {
-            String firstname = element.findElement(By.cssSelector("td:nth-child(3)")).getText();
-            String lastname = element.findElement(By.cssSelector("td:nth-child(2)")).getText();
-            int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-            contacts.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname));
-        }
-        return contacts;
     }
 
     private Contacts contactCache = null;
