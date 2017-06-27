@@ -93,6 +93,10 @@ public class ContactHelper extends HelperBase {
         return isElementPresent(By.cssSelector("#maintable input[name='selected[]']"));
     }
 
+    public int count() {
+        return wd.findElements(By.cssSelector("#maintable input[name='selected[]']")).size();
+    }
+
     public void createIfRequired(ContactData contact, boolean creation) {
         new NavigationHelper(wd).homePage();
         if(! isThereAContact()) {

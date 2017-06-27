@@ -76,6 +76,10 @@ public class GroupHelper extends HelperBase {
         return isElementPresent(By.cssSelector("#content input[name='selected[]']"));
     }
 
+    public int count() {
+        return wd.findElements(By.cssSelector("#content input[name='selected[]']")).size();
+    }
+
     public void createIfRequired(GroupData group) {
         new NavigationHelper(wd).groupPage();
         if (!isThereAGroup()) {
