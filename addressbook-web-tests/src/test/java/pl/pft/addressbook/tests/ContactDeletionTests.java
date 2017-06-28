@@ -16,9 +16,7 @@ public class ContactDeletionTests extends TestBase {
         app.group().createIfRequired(new GroupData().withName("Test1"));
         app.contact().createIfRequired(new ContactData()
                 .withFirstname("firstname").withLastname("lastname").withAddress("somewhere over the rainbow")
-                .withEmail("email1@email.com").withEmail2("email2@email.com").withEmail3("email3@email.com")
-                .withHomePhone("(+11) 111 1111").withMobilePhone("2-222-222").withWorkPhone("333 33 33")
-                .withGroup("Test1"), true);
+                .withEmail("email1@email.com").withHomePhone("(+11) 111 1111").withGroup("Test1"), true);
     }
 
     @Test
