@@ -5,9 +5,6 @@ public class ContactData {
     private String firstname;
     private String lastname;
     private String address;
-    private String address2nd;
-    private String address3rd;
-    private String address4th;
     private String email;
     private String email2;
     private String email3;
@@ -34,21 +31,6 @@ public class ContactData {
 
     public ContactData withAddress(String address) {
         this.address = address;
-        return this;
-    }
-
-    public ContactData withAddress2nd(String address2nd) {
-        this.address2nd = address2nd;
-        return this;
-    }
-
-    public ContactData withAddress3rd(String address3rd) {
-        this.address3rd = address3rd;
-        return this;
-    }
-
-    public ContactData withAddress4th(String address4th) {
-        this.address4th = address4th;
         return this;
     }
 
@@ -100,12 +82,6 @@ public class ContactData {
     }
 
     public String getAddress() { return address; }
-
-    public String getAddress2nd() { return address2nd; }
-
-    public String getAddress3rd() { return address3rd; }
-
-    public String getAddress4th() { return address4th; }
 
     public String getEmail() {
         return email;

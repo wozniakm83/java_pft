@@ -14,10 +14,9 @@ public class ContactPhoneTests extends TestBase {
         ContactData contact = app.contact().all().iterator().next();
         ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
 
+        assertThat(contact.getFirstname(), equalTo(contactInfoFromEditForm.getFirstname()));
+        assertThat(contact.getLastname(), equalTo(contactInfoFromEditForm.getLastname()));
         assertThat(contact.getAddress(), equalTo(contactInfoFromEditForm.getAddress()));
-        assertThat(contact.getAddress2nd(), equalTo(contactInfoFromEditForm.getAddress2nd()));
-        assertThat(contact.getAddress3rd(), equalTo(contactInfoFromEditForm.getAddress3rd()));
-        assertThat(contact.getAddress4th(), equalTo(contactInfoFromEditForm.getAddress4th()));
         assertThat(contact.getEmail(), equalTo(contactInfoFromEditForm.getEmail()));
         assertThat(contact.getEmail2(), equalTo(contactInfoFromEditForm.getEmail2()));
         assertThat(contact.getEmail3(), equalTo(contactInfoFromEditForm.getEmail3()));
