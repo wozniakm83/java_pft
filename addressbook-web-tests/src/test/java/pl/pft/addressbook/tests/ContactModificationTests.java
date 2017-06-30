@@ -28,7 +28,7 @@ public class ContactModificationTests extends TestBase {
                 .withId(modifiedContact.getId())
                 .withFirstname("firstname2")
                 .withLastname("lastname2")
-                .withAddress("on the other side of the mirror")
+                .withAddress("the other side of the mirror")
                 .withHomePhone("(+11) 444 4444")
                 .withWorkPhone("")
                 .withEmail("newemail1@email.com")
