@@ -48,10 +48,11 @@ public class GroupDataGenerator {
     private List<GroupData> generateGroups(int count) {
         List<GroupData> groups = new ArrayList<GroupData>();
         for(int i = 0; i < count; i++) {
+            int n = i + 1;
             groups.add(new GroupData()
-                    .withName(String.format("Test%s", i))
-                    .withHeader(String.format("Test%s_header", i))
-                    .withFooter(String.format("Test%s_footer", i))
+                    .withName(String.format("Test%s", n))
+                    .withHeader(String.format("Test%s_header", n))
+                    .withFooter(String.format("Test%s_footer", n))
             );
         }
         return groups;
