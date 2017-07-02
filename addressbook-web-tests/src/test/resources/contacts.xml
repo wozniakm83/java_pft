@@ -1,0 +1,41 @@
+<list>
+  <pl.pft.addressbook.model.ContactData>
+    <id>2147483647</id>
+    <firstname>firstname1</firstname>
+    <lastname>lastname1</lastname>
+    <address>address1</address>
+    <email>email11@email.com</email>
+    <email2>email21@email.com</email2>
+    <email3>email31@email.com</email3>
+    <homePhone>(+11) 1111111</homePhone>
+    <mobilePhone>122 22 22</mobilePhone>
+    <workPhone>133-33-33</workPhone>
+    <group>Test1</group>
+  </pl.pft.addressbook.model.ContactData>
+  <pl.pft.addressbook.model.ContactData>
+    <id>2147483647</id>
+    <firstname>firstname2</firstname>
+    <lastname>lastname2</lastname>
+    <address>address2</address>
+    <email>email12@email.com</email>
+    <email2>email22@email.com</email2>
+    <email3>email32@email.com</email3>
+    <homePhone>(+11) 2111111</homePhone>
+    <mobilePhone>222 22 22</mobilePhone>
+    <workPhone>233-33-33</workPhone>
+    <group>Test1</group>
+  </pl.pft.addressbook.model.ContactData>
+  <pl.pft.addressbook.model.ContactData>
+    <id>2147483647</id>
+    <firstname>firstname3</firstname>
+    <lastname>lastname3</lastname>
+    <address>address3</address>
+    <email>email13@email.com</email>
+    <email2>email23@email.com</email2>
+    <email3>email33@email.com</email3>
+    <homePhone>(+11) 3111111</homePhone>
+    <mobilePhone>322 22 22</mobilePhone>
+    <workPhone>333-33-33</workPhone>
+    <group>Test1</group>
+  </pl.pft.addressbook.model.ContactData>
+</list>

@@ -1,0 +1,20 @@
+<list>
+  <pl.pft.addressbook.model.GroupData>
+    <id>2147483647</id>
+    <name>Test1</name>
+    <header>Test1_header</header>
+    <footer>Test1_footer</footer>
+  </pl.pft.addressbook.model.GroupData>
+  <pl.pft.addressbook.model.GroupData>
+    <id>2147483647</id>
+    <name>Test2</name>
+    <header>Test2_header</header>
+    <footer>Test2_footer</footer>
+  </pl.pft.addressbook.model.GroupData>
+  <pl.pft.addressbook.model.GroupData>
+    <id>2147483647</id>
+    <name>Test3</name>
+    <header>Test3_header</header>
+    <footer>Test3_footer</footer>
+  </pl.pft.addressbook.model.GroupData>
+</list>
