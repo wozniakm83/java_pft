@@ -8,7 +8,10 @@ import org.testng.annotations.Test;
 import pl.pft.addressbook.model.GroupData;
 import pl.pft.addressbook.model.Groups;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -44,7 +47,6 @@ public class GroupCreationTests extends TestBase {
                 xml += line;
                 line = reader.readLine();
             }
-
             XStream xstream = new XStream();
             xstream.processAnnotations(GroupData.class);
             List<GroupData> groups = (List<GroupData>) xstream.fromXML(xml);
@@ -64,7 +66,7 @@ public class GroupCreationTests extends TestBase {
             String[] split = line.split(";");
             list.add(new Object[] {new GroupData().withName(split[0]).withHeader(split[1]).withFooter(split[2])});
             line = reader.readLine();
-            }
+        }
         return list.iterator();
     }
 

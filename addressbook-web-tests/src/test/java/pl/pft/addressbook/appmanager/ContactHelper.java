@@ -9,12 +9,11 @@ import pl.pft.addressbook.model.ContactData;
 import pl.pft.addressbook.model.Contacts;
 
 import java.util.List;
+import java.util.Properties;
 
 public class ContactHelper extends HelperBase {
 
-    public ContactHelper(WebDriver wd)  {
-        super(wd);
-    }
+    public ContactHelper(WebDriver wd) { super(wd); }
 
     public void returnToHomePage() {
         wd.findElement(By.linkText("home")).click();
