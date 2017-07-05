@@ -8,8 +8,7 @@
     "email3": "email31@email.com",
     "homePhone": "(+11) 1111111",
     "mobilePhone": "122 22 22",
-    "workPhone": "133-33-33",
-    "group": "Test1"
+    "workPhone": "133-33-33"
   },
   {
     "firstname": "firstname2",
@@ -20,8 +19,7 @@
     "email3": "email32@email.com",
     "homePhone": "(+11) 2111111",
     "mobilePhone": "222 22 22",
-    "workPhone": "233-33-33",
-    "group": "Test1"
+    "workPhone": "233-33-33"
   },
   {
     "firstname": "firstname3",
@@ -32,7 +30,6 @@
     "email3": "email33@email.com",
     "homePhone": "(+11) 3111111",
     "mobilePhone": "322 22 22",
-    "workPhone": "333-33-33",
-    "group": "Test1"
+    "workPhone": "333-33-33"
   }
 ]
