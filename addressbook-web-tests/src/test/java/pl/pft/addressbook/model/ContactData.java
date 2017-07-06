@@ -54,8 +54,10 @@ public class ContactData {
     private String workPhone;
     @Transient
     private String allPhones;
+    @Expose
     @Transient
     private String group;
+    @Expose
     @Column(name = "photo")
     @Type(type = "text")
     private String photo;
@@ -174,7 +176,13 @@ public class ContactData {
 
     public String getGroup() { return group; }
 
-    public File getPhoto() { return new File(photo); }
+    public File getPhoto() {
+        if (photo == null) {
+            return null;
+        } else {
+            return new File(photo);
+        }
+    }
 
     @Override
     public String toString() {
@@ -189,7 +197,7 @@ public class ContactData {
                 ", homePhone='" + homePhone + '\'' +
                 ", mobilePhone='" + mobilePhone + '\'' +
                 ", workPhone='" + workPhone + '\'' +
-                //", group='" + group + '\'' +
+                ", group='" + group + '\'' +
                 '}';
     }
 
@@ -202,7 +210,15 @@ public class ContactData {
 
         if (id != that.id) return false;
         if (firstname != null ? !firstname.equals(that.firstname) : that.firstname != null) return false;
-        return lastname != null ? lastname.equals(that.lastname) : that.lastname == null;
+        if (lastname != null ? !lastname.equals(that.lastname) : that.lastname != null) return false;
+        if (address != null ? !address.equals(that.address) : that.address != null) return false;
+        if (email != null ? !email.equals(that.email) : that.email != null) return false;
+        if (email2 != null ? !email2.equals(that.email2) : that.email2 != null) return false;
+        if (email3 != null ? !email3.equals(that.email3) : that.email3 != null) return false;
+        if (homePhone != null ? !homePhone.equals(that.homePhone) : that.homePhone != null) return false;
+        if (mobilePhone != null ? !mobilePhone.equals(that.mobilePhone) : that.mobilePhone != null) return false;
+        if (workPhone != null ? !workPhone.equals(that.workPhone) : that.workPhone != null) return false;
+        return group != null ? group.equals(that.group) : that.group == null;
     }
 
     @Override
@@ -210,7 +226,14 @@ public class ContactData {
         int result = id;
         result = 31 * result + (firstname != null ? firstname.hashCode() : 0);
         result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
+        result = 31 * result + (address != null ? address.hashCode() : 0);
+        result = 31 * result + (email != null ? email.hashCode() : 0);
+        result = 31 * result + (email2 != null ? email2.hashCode() : 0);
+        result = 31 * result + (email3 != null ? email3.hashCode() : 0);
+        result = 31 * result + (homePhone != null ? homePhone.hashCode() : 0);
+        result = 31 * result + (mobilePhone != null ? mobilePhone.hashCode() : 0);
+        result = 31 * result + (workPhone != null ? workPhone.hashCode() : 0);
+        result = 31 * result + (group != null ? group.hashCode() : 0);
         return result;
     }
-
 }

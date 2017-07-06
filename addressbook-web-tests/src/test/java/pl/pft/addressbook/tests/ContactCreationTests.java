@@ -49,7 +49,7 @@ public class ContactCreationTests extends TestBase {
                 line = reader.readLine();
             }
             XStream xstream = new XStream();
-            xstream.processAnnotations(GroupData.class);
+            xstream.processAnnotations(ContactData.class);
             List<ContactData> contacts = (List<ContactData>) xstream.fromXML(xml);
             return contacts.stream().map((g) -> new Object[]{g}).collect(Collectors.toList()).iterator();
         }
@@ -85,10 +85,10 @@ public class ContactCreationTests extends TestBase {
     public void testContactCreation(ContactData contact) {
         app.group().createIfRequired(new GroupData().withName("Test1"));
         app.goTo().homePage();
-        Contacts before = app.contact().all();
+        Contacts before = app.db().contacts();
         app.contact().create(contact, true);
         assertThat(app.contact().count(), equalTo(before.size() + 1));
-        Contacts after = app.contact().all();
+        Contacts after = app.db().contacts();
         assertThat(after, equalTo(
                 before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
     }

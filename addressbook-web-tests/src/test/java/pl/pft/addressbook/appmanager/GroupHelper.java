@@ -82,7 +82,7 @@ public class GroupHelper extends HelperBase {
 
     public void createIfRequired(GroupData group) {
         new NavigationHelper(wd).groupPage();
-        if (!isThereAGroup()) {
+        if(!isThereAGroup()) {
             create(group);
         }
     }
