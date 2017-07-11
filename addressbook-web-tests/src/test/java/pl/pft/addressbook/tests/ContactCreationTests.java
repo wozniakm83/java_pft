@@ -25,7 +25,7 @@ public class ContactCreationTests extends TestBase {
 
     @DataProvider
     public Iterator<Object[]> validContactsFromJson() throws IOException {
-        try(BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.json")))) {
+        try(BufferedReader reader = new BufferedReader(new FileReader(new File(app.properties.getProperty("data.contactsJson"))))) {
             String json = "";
             String line = reader.readLine();
             while (line != null) {
@@ -41,7 +41,7 @@ public class ContactCreationTests extends TestBase {
 
     @DataProvider
     public Iterator<Object[]> validContactsFromXML() throws IOException {
-        try(BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.xml")))) {
+        try(BufferedReader reader = new BufferedReader(new FileReader(new File(app.properties.getProperty("data.contactsXml"))))) {
             String xml = "";
             String line = reader.readLine();
             while (line != null) {
@@ -58,11 +58,11 @@ public class ContactCreationTests extends TestBase {
     @DataProvider
     public Iterator<Object[]> validContactFromsCSV() throws IOException {
         List<Object[]> list = new ArrayList<Object[]>();
-        BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.csv")));
+        BufferedReader reader = new BufferedReader(new FileReader(new File(app.properties.getProperty("data.contactsCsv"))));
         String line = reader.readLine();
         while (line != null) {
             String[] split = line.split(";");
-            File photo = new File("src/test/resources/grumpy_cat.jpg");
+            File photo = new File(app.properties.getProperty("contact.defaultPhoto"));
             list.add(new Object[]{new ContactData()
                     .withFirstname(split[0])
                     .withLastname(split[1])
@@ -83,7 +83,7 @@ public class ContactCreationTests extends TestBase {
 
     @Test(dataProvider = "validContactsFromJson")
     public void testContactCreation(ContactData contact) {
-        app.group().createIfRequired(new GroupData().withName("Test1"));
+        app.group().createIfRequired(new GroupData().withName(app.properties.getProperty("group.defaultName")));
         app.goTo().homePage();
         Contacts before = app.db().contacts();
         app.contact().create(contact, true);
@@ -97,7 +97,7 @@ public class ContactCreationTests extends TestBase {
     public void testCurrentDir() {
         File currentDir = new File(".");
         System.out.println(currentDir.getAbsolutePath());
-        File photo = new File("src/test/resources/grumpy_cat.jpg");
+        File photo = new File(app.properties.getProperty("contact.defaultPhoto"));
         System.out.println(photo.getAbsolutePath());
         System.out.println(photo.exists());
     }

@@ -17,13 +17,17 @@ public class ContactDataTests extends TestBase {
     public void ensurePreconditions() {
         if(app.db().groups().size() == 0) {
             app.goTo().groupPage();
-            app.group().create(new GroupData().withName("Test1"));
+            app.group().create(new GroupData().withName(app.properties.getProperty("group.defaultName")));
         }
         if(app.db().contacts().size() == 0) {
             app.goTo().homePage();
             app.contact().create(new ContactData()
-                    .withFirstname("firstname").withLastname("lastname").withAddress("somewhere over the rainbow")
-                    .withEmail("email1@email.com").withHomePhone("(+11) 111 1111").withGroup("Test1"), true);
+                    .withFirstname(app.properties.getProperty("contact.defaultFirstname"))
+                    .withLastname(app.properties.getProperty("contact.defaultLastname"))
+                    .withAddress(app.properties.getProperty("contact.defaultAddress"))
+                    .withEmail(app.properties.getProperty("contact.defaultEmail"))
+                    .withHomePhone(app.properties.getProperty("contact.defaultHomePhone")),
+                    true);
         }
     }
 

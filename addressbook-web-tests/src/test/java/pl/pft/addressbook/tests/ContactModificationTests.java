@@ -15,13 +15,17 @@ public class ContactModificationTests extends TestBase {
     public void ensurePreconditions() {
         if(app.db().groups().size() == 0) {
             app.goTo().groupPage();
-            app.group().create(new GroupData().withName("Test1"));
+            app.group().create(new GroupData().withName(app.properties.getProperty("group.defaultName")));
         }
         if(app.db().contacts().size() == 0) {
             app.goTo().homePage();
             app.contact().create(new ContactData()
-                    .withFirstname("firstname").withLastname("lastname").withAddress("somewhere over the rainbow")
-                    .withEmail("email1@email.com").withHomePhone("(+11) 111 1111").withGroup("Test1"), true);
+                    .withFirstname(app.properties.getProperty("contact.defaultFirstname"))
+                    .withLastname(app.properties.getProperty("contact.defaultLastname"))
+                    .withAddress(app.properties.getProperty("contact.defaultAddress"))
+                    .withEmail(app.properties.getProperty("contact.defaultEmail"))
+                    .withHomePhone(app.properties.getProperty("contact.defaultHomePhone")),
+                    true);
         }
     }
 
@@ -32,15 +36,15 @@ public class ContactModificationTests extends TestBase {
         ContactData modifiedContact = before.iterator().next();
         ContactData contact = new ContactData()
                 .withId(modifiedContact.getId())
-                .withFirstname("firstname2")
-                .withLastname("lastname2")
-                .withAddress("new_adress")
-                .withHomePhone("(+11) 444 4444")
+                .withFirstname(app.properties.getProperty("contact.modifiedFirstname"))
+                .withLastname(app.properties.getProperty("contact.modifiedLastname"))
+                .withAddress(app.properties.getProperty("contact.modifiedAddress"))
+                .withHomePhone(app.properties.getProperty("contact.modifiedHomePhone"))
                 .withMobilePhone(modifiedContact.getMobilePhone())
                 .withWorkPhone("")
-                .withEmail("new_email1@email.com")
+                .withEmail(app.properties.getProperty("contact.modifiedEmail"))
                 .withEmail2(modifiedContact.getEmail2())
-                .withEmail3("email3@email.com");
+                .withEmail3(app.properties.getProperty("contact.modifiedEmail3"));
         app.contact().modify(contact);
         assertThat(app.contact().count(), equalTo(before.size()));
         Contacts after = app.db().contacts();

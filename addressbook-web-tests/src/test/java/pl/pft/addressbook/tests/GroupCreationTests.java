@@ -24,7 +24,7 @@ public class GroupCreationTests extends TestBase {
 
     @DataProvider
     public Iterator<Object[]> validGroupsFromJson() throws IOException {
-        try(BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/groups.json")))) {
+        try(BufferedReader reader = new BufferedReader(new FileReader(new File(app.properties.getProperty("data.groupsJson"))))) {
             String json = "";
             String line = reader.readLine();
             while (line != null) {
@@ -40,7 +40,7 @@ public class GroupCreationTests extends TestBase {
 
     @DataProvider
     public Iterator<Object[]> validGroupsFromXML() throws IOException {
-        try(BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/groups.xml")))){
+        try(BufferedReader reader = new BufferedReader(new FileReader(new File(app.properties.getProperty("data.groupsXml"))))){
             String xml = "";
             String line = reader.readLine();
             while (line != null) {
@@ -57,10 +57,7 @@ public class GroupCreationTests extends TestBase {
     @DataProvider
     public Iterator<Object[]> validGroupsFromCSV() throws IOException {
         List<Object[]> list = new ArrayList<Object[]>();
-        list.add(new Object[] {new GroupData().withName("Test1").withHeader("Test1_header").withFooter("Test1_footer")});
-        list.add(new Object[] {new GroupData().withName("Test2").withHeader("Test2_header").withFooter("Test2_footer")});
-        list.add(new Object[] {new GroupData().withName("Test3").withHeader("Test3_header").withFooter("Test3_footer")});
-        BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/groups.csv")));
+        BufferedReader reader = new BufferedReader(new FileReader(new File(app.properties.getProperty("data.groupsCsv"))));
         String line = reader.readLine();
         while(line != null) {
             String[] split = line.split(";");
