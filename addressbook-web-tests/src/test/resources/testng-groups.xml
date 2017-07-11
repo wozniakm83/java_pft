@@ -8,3 +8,4 @@
             <class name="pl.pft.addressbook.tests.GroupDeletionTests" />
         </classes>
     </test>
+</suite>

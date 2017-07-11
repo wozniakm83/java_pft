@@ -57,7 +57,6 @@ public class ContactData {
     @Expose
     @Transient
     private String group;
-    @Expose
     @Column(name = "photo")
     @Type(type = "text")
     private String photo;
@@ -190,7 +189,7 @@ public class ContactData {
                 "id=" + id +
                 ", firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
-                ", addresse='" + address + '\'' +
+                ", address='" + address + '\'' +
                 ", email='" + email + '\'' +
                 ", email2='" + email2 + '\'' +
                 ", email3='" + email3 + '\'' +
@@ -217,8 +216,7 @@ public class ContactData {
         if (email3 != null ? !email3.equals(that.email3) : that.email3 != null) return false;
         if (homePhone != null ? !homePhone.equals(that.homePhone) : that.homePhone != null) return false;
         if (mobilePhone != null ? !mobilePhone.equals(that.mobilePhone) : that.mobilePhone != null) return false;
-        if (workPhone != null ? !workPhone.equals(that.workPhone) : that.workPhone != null) return false;
-        return group != null ? group.equals(that.group) : that.group == null;
+        return workPhone != null ? workPhone.equals(that.workPhone) : that.workPhone == null;
     }
 
     @Override
@@ -233,7 +231,6 @@ public class ContactData {
         result = 31 * result + (homePhone != null ? homePhone.hashCode() : 0);
         result = 31 * result + (mobilePhone != null ? mobilePhone.hashCode() : 0);
         result = 31 * result + (workPhone != null ? workPhone.hashCode() : 0);
-        result = 31 * result + (group != null ? group.hashCode() : 0);
         return result;
     }
 }

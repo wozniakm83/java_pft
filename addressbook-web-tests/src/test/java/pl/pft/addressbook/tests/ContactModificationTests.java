@@ -34,12 +34,13 @@ public class ContactModificationTests extends TestBase {
                 .withId(modifiedContact.getId())
                 .withFirstname("firstname2")
                 .withLastname("lastname2")
-                .withAddress("the other side of the mirror")
+                .withAddress("new_adress")
                 .withHomePhone("(+11) 444 4444")
+                .withMobilePhone(modifiedContact.getMobilePhone())
                 .withWorkPhone("")
-                .withEmail("newemail1@email.com")
-                .withEmail3("email3@email.com")
-                .withGroup("Test1");
+                .withEmail("new_email1@email.com")
+                .withEmail2(modifiedContact.getEmail2())
+                .withEmail3("email3@email.com");
         app.contact().modify(contact);
         assertThat(app.contact().count(), equalTo(before.size()));
         Contacts after = app.db().contacts();
