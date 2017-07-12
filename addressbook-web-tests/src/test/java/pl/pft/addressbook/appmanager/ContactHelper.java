@@ -9,7 +9,6 @@ import pl.pft.addressbook.model.ContactData;
 import pl.pft.addressbook.model.Contacts;
 
 import java.util.List;
-import java.util.Properties;
 
 public class ContactHelper extends HelperBase {
 
@@ -35,9 +34,8 @@ public class ContactHelper extends HelperBase {
         type(By.name("work"), contactData.getWorkPhone());
         attach(By.name("photo"), contactData.getPhoto());
 
-
-        if(contactData.getGroup() != null) {
-            if(creation) {
+        if(creation) {
+            if(contactData.getGroup() != null) {
                 new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
             } else {
                 Assert.assertFalse(isElementPresent((By.name("new_group"))));
@@ -152,21 +150,30 @@ public class ContactHelper extends HelperBase {
                     .withAddress(address).withEmail(email).withEmail2(email2).withEmail3(email3)
                     .withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work);
     }
+
     public ContactData infoFromViewForm(ContactData contact) {
         viewContact(contact.getId());
-        String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
-        String lastname = wd.findElement(By.name("lastname")).getAttribute("value");
-        String address = wd.findElement(By.name("address")).getAttribute("value");
-        String email = wd.findElement(By.name("email")).getAttribute("value");
-        String email2 = wd.findElement(By.name("email2")).getAttribute("value");
-        String email3 = wd.findElement(By.name("email3")).getAttribute("value");
-        String home = wd.findElement(By.name("home")).getAttribute("value");
-        String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
-        String work = wd.findElement(By.name("work")).getAttribute("value");
-        wd.navigate().back();
-        return new ContactData().withId(contact.getId()).withFirstname(firstname).withLastname(lastname)
-                .withAddress(address).withEmail(email).withEmail2(email2).withEmail3(email3)
-                .withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work);
+        String contactInfo = wd.findElement(By.id("content")).getText();
+        contactInfo = contactInfo
+                .replaceFirst("\\s", ";")
+                .replace("H: ", "")
+                .replace("M: ", "")
+                .replace("W: ", "")
+                .replace("Member of: ", "")
+                .replaceAll("\\n", ";");
+        String[] split = contactInfo.split(";");
+        System.out.println(contactInfo);
+        return new ContactData()
+                .withFirstname(split[0])
+                .withLastname(split[1])
+                .withAddress(split[2])
+                .withHomePhone(split[4])
+                .withMobilePhone(split[5])
+                .withWorkPhone(split[6])
+                .withEmail(split[8])
+                .withEmail2(split[9])
+                .withEmail3(split[10])
+                .withGroup(split[13]);
     }
 }
 
