@@ -12,7 +12,9 @@ import java.util.List;
 
 public class ContactHelper extends HelperBase {
 
-    public ContactHelper(WebDriver wd) { super(wd); }
+    public ContactHelper(ApplicationManager app) {
+        super(app);
+    }
 
     public void returnToHomePage() {
         wd.findElement(By.linkText("home")).click();
@@ -111,7 +113,7 @@ public class ContactHelper extends HelperBase {
     }
 
     public void createIfRequired(ContactData contact, boolean creation) {
-        new NavigationHelper(wd).homePage();
+        new NavigationHelper(app).homePage();
         if(! isThereAContact()) {
             create(contact, creation);
         }

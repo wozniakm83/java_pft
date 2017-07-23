@@ -10,8 +10,8 @@ import java.util.List;
 
 public class GroupHelper extends HelperBase {
 
-    public GroupHelper(WebDriver wd) {
-        super(wd);
+    public GroupHelper(ApplicationManager app) {
+        super(app);
     }
 
     public void returnToGroupPage() {
@@ -81,7 +81,7 @@ public class GroupHelper extends HelperBase {
     }
 
     public void createIfRequired(GroupData group) {
-        new NavigationHelper(wd).groupPage();
+        new NavigationHelper(app).groupPage();
         if(!isThereAGroup()) {
             create(group);
         }
