@@ -17,5 +17,3 @@ gradle-app.setting
 .idea/misc.xml
 
 *.log
-*.iml
-.idea/libraries/Gradle__commons_net_commons_net_3_6.xml
