@@ -91,6 +91,13 @@ public class ContactHelper extends HelperBase {
         returnToHomePage();
     }
 
+    public void displayContactsInGroup(ContactData contact) {
+        new Select(wd.findElement(By.cssSelector("#right > select[name='group']"))).selectByVisibleText(contact.getGroup());
+    }
+
+
+    //
+
     public boolean isThereAContact() {
         return isElementPresent(By.cssSelector("#maintable input[name='selected[]']"));
     }
