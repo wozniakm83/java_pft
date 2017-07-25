@@ -6,11 +6,15 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.BrowserType;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -42,17 +46,23 @@ public class ApplicationManager {
         sessionHelper.login(properties.getProperty("web.adminLogin"), properties.getProperty("web.adminPassword"));
     }
 
-    public WebDriver getDriver() {
+    public WebDriver getDriver() throws MalformedURLException {
         if(wd == null) {
-            if (browser.equals(BrowserType.FIREFOX)) {
-                wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
-            } else if (browser.equals(BrowserType.CHROME)) {
-                wd = new ChromeDriver();
-            } else if (browser.equals(BrowserType.IE)) {
-                wd = new InternetExplorerDriver();
+            if ("".equals(properties.getProperty("selenium.server"))) {
+                if (browser.equals(BrowserType.FIREFOX)) {
+                    wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
+                } else if (browser.equals(BrowserType.CHROME)) {
+                    wd = new ChromeDriver();
+                } else if (browser.equals(BrowserType.IE)) {
+                    wd = new InternetExplorerDriver();
+                }
+                wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+                wd.get(properties.getProperty("web.baseUrl"));
+            } else {
+                DesiredCapabilities capabilities = new DesiredCapabilities();
+                capabilities.setBrowserName(browser);
+                wd = new RemoteWebDriver(new URL(properties.getProperty("selenium.server")), capabilities);
             }
-            wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
-            wd.get(properties.getProperty("web.baseUrl"));
         }
         return wd;
     }
