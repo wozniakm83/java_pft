@@ -6,11 +6,12 @@ import org.openqa.selenium.WebElement;
 import pl.pft.addressbook.model.GroupData;
 import pl.pft.addressbook.model.Groups;
 
+import java.net.MalformedURLException;
 import java.util.List;
 
 public class GroupHelper extends HelperBase {
 
-    public GroupHelper(ApplicationManager app) {
+    public GroupHelper(ApplicationManager app) throws MalformedURLException {
         super(app);
     }
 
@@ -80,7 +81,7 @@ public class GroupHelper extends HelperBase {
         return wd.findElements(By.cssSelector("#content input[name='selected[]']")).size();
     }
 
-    public void createIfRequired(GroupData group) {
+    public void createIfRequired(GroupData group) throws MalformedURLException {
         new NavigationHelper(app).groupPage();
         if(!isThereAGroup()) {
             create(group);

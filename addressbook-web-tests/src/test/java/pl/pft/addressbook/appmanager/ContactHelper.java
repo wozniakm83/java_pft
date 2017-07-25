@@ -8,11 +8,12 @@ import org.testng.Assert;
 import pl.pft.addressbook.model.ContactData;
 import pl.pft.addressbook.model.Contacts;
 
+import java.net.MalformedURLException;
 import java.util.List;
 
 public class ContactHelper extends HelperBase {
 
-    public ContactHelper(ApplicationManager app) {
+    public ContactHelper(ApplicationManager app) throws MalformedURLException {
         super(app);
     }
 
@@ -112,7 +113,7 @@ public class ContactHelper extends HelperBase {
         return wd.findElements(By.cssSelector("#maintable input[name='selected[]']")).size();
     }
 
-    public void createIfRequired(ContactData contact, boolean creation) {
+    public void createIfRequired(ContactData contact, boolean creation) throws MalformedURLException {
         new NavigationHelper(app).homePage();
         if(! isThereAContact()) {
             create(contact, creation);

@@ -3,9 +3,11 @@ package pl.pft.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import java.net.MalformedURLException;
+
 public class SessionHelper extends HelperBase {
 
-    public SessionHelper(ApplicationManager app) {
+    public SessionHelper(ApplicationManager app) throws MalformedURLException {
         super(app);
     }
 

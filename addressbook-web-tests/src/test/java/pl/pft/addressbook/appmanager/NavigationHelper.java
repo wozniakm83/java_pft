@@ -3,9 +3,11 @@ package pl.pft.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import java.net.MalformedURLException;
+
 public class NavigationHelper extends HelperBase {
 
-    public NavigationHelper(ApplicationManager app) {
+    public NavigationHelper(ApplicationManager app) throws MalformedURLException {
         super(app);
     }
 
