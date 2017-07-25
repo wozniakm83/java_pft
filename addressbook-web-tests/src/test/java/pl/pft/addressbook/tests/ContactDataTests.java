@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 import pl.pft.addressbook.model.ContactData;
 import pl.pft.addressbook.model.GroupData;
 
+import java.net.MalformedURLException;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 

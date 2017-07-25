@@ -13,6 +13,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -82,7 +83,7 @@ public class ContactCreationTests extends TestBase {
     }
 
     @Test(dataProvider = "validContactsFromJson")
-    public void testContactCreation(ContactData contact) {
+    public void testContactCreation(ContactData contact) throws MalformedURLException {
         app.group().createIfRequired(new GroupData().withName(app.properties.getProperty("group.defaultName")));
         app.goTo().homePage();
         Contacts before = app.db().contacts();
