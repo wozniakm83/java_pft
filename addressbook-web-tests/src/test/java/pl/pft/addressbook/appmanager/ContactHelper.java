@@ -120,7 +120,7 @@ public class ContactHelper extends HelperBase {
         }
     }*/
 
-    public void createIfRequired(ContactData contact, boolean creation) throws MalformedURLException {
+    public void createIfRequired(boolean creation) throws MalformedURLException {
         new NavigationHelper(app).homePage();
         if (app.db().contacts().size() == 0) {
             app.goTo().homePage();

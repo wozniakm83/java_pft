@@ -15,8 +15,8 @@ public class ContactModificationTests extends TestBase {
 
     @BeforeMethod
     public void ensurePreconditions() throws MalformedURLException {
-        app.group().createIfRequired(new GroupData());
-        app.contact().createIfRequired(new ContactData(), true);
+        app.group().createIfRequired();
+        app.contact().createIfRequired(true);
     }
 
     @Test

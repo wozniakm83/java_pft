@@ -85,7 +85,7 @@ public class ContactCreationTests extends TestBase {
 
     @BeforeMethod
     public void ensurePreconditions() throws MalformedURLException {
-        app.group().createIfRequired(new GroupData());
+        app.group().createIfRequired();
     }
 
     @Test(dataProvider = "validContactsFromJson")

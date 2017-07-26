@@ -88,7 +88,7 @@ public class GroupHelper extends HelperBase {
         }
     }*/
 
-    public void createIfRequired(GroupData group) throws MalformedURLException {
+    public void createIfRequired() throws MalformedURLException {
         new NavigationHelper(app).groupPage();
         if (app.db().groups().size() == 0) {
             app.goTo().groupPage();
