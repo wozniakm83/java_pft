@@ -5,17 +5,16 @@ import org.testng.annotations.Test;
 import pl.pft.addressbook.model.GroupData;
 import pl.pft.addressbook.model.Groups;
 
+import java.net.MalformedURLException;
+
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class GroupDeletionTests extends TestBase {
 
     @BeforeMethod
-    public void ensurePreconditions() {
-        if(app.db().groups().size() == 0) {
-            app.goTo().groupPage();
-            app.group().create(new GroupData().withName(app.properties.getProperty("group.defaultName")));
-        }
+    public void ensurePreconditions() throws MalformedURLException {
+        app.group().createIfRequired(new GroupData());
     }
 
     @Test
