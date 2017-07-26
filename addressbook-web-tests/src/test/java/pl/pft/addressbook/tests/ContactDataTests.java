@@ -15,9 +15,9 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class ContactDataTests extends TestBase {
 
     @BeforeMethod
-    public void ensurePreconditions(GroupData group, ContactData contact) throws MalformedURLException {
-        app.group().createIfRequired(group);
-        app.contact().createIfRequired(contact, true);
+    public void ensurePreconditions() throws MalformedURLException {
+        app.group().createIfRequired(new GroupData());
+        app.contact().createIfRequired(new ContactData(), true);
     }
 
     @Test

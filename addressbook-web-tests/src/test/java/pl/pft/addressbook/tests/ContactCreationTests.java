@@ -84,13 +84,12 @@ public class ContactCreationTests extends TestBase {
     }
 
     @BeforeMethod
-    public void ensurePreconditions(GroupData group) throws MalformedURLException {
-        app.group().createIfRequired(group);
+    public void ensurePreconditions() throws MalformedURLException {
+        app.group().createIfRequired(new GroupData());
     }
 
     @Test(dataProvider = "validContactsFromJson")
     public void testContactCreation(ContactData contact) throws MalformedURLException {
-        //app.group().createIfRequired(new GroupData().withName(app.properties.getProperty("group.defaultName")));
         app.goTo().homePage();
         Contacts before = app.db().contacts();
         app.contact().create(contact, true);
