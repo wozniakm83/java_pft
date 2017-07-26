@@ -21,6 +21,8 @@
     <orderEntry type="library" name="Gradle: org.hibernate:hibernate-core:5.2.10.Final" level="project" />
     <orderEntry type="library" name="Gradle: ru.yandex.qatools.allure:allure-testng-adaptor:1.4.0.RC4" level="project" />
     <orderEntry type="library" name="Gradle: org.robotframework:robotframework:3.0.2" level="project" />
+    <orderEntry type="library" name="Gradle: info.cukes:cucumber-java:1.2.5" level="project" />
+    <orderEntry type="library" name="Gradle: info.cukes:cucumber-testng:1.2.5" level="project" />
     <orderEntry type="library" name="Gradle: org.yaml:snakeyaml:1.17" level="project" />
     <orderEntry type="library" name="Gradle: org.seleniumhq.selenium:selenium-api:3.4.0" level="project" />
     <orderEntry type="library" name="Gradle: org.seleniumhq.selenium:selenium-chrome-driver:3.4.0" level="project" />
@@ -74,8 +76,12 @@
     <orderEntry type="library" name="Gradle: dom4j:dom4j:1.6.1" level="project" />
     <orderEntry type="library" name="Gradle: org.hibernate.common:hibernate-commons-annotations:5.0.1.Final" level="project" />
     <orderEntry type="library" name="Gradle: ru.yandex.qatools.allure:allure-java-aspects:1.4.0.RC4" level="project" />
+    <orderEntry type="library" name="Gradle: info.cukes:cucumber-core:1.2.5" level="project" />
     <orderEntry type="library" name="Gradle: ru.yandex.qatools.allure:allure-java-commons:1.4.0.RC4" level="project" />
     <orderEntry type="library" name="Gradle: org.aspectj:aspectjrt:1.7.4" level="project" />
+    <orderEntry type="library" name="Gradle: info.cukes:cucumber-html:0.2.3" level="project" />
+    <orderEntry type="library" name="Gradle: info.cukes:cucumber-jvm-deps:1.0.5" level="project" />
+    <orderEntry type="library" name="Gradle: info.cukes:gherkin:2.12.2" level="project" />
     <orderEntry type="library" name="Gradle: ru.yandex.qatools.allure:allure-java-annotations:1.4.0.RC4" level="project" />
     <orderEntry type="library" name="Gradle: com.sun.xml.bind:jaxb-impl:2.2.7" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.tika:tika-core:1.5" level="project" />
