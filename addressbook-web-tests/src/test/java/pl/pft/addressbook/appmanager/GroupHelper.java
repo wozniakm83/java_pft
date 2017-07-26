@@ -92,7 +92,11 @@ public class GroupHelper extends HelperBase {
         new NavigationHelper(app).groupPage();
         if (app.db().groups().size() == 0) {
             app.goTo().groupPage();
-            app.group().create(new GroupData().withName(app.properties.getProperty("group.defaultName")));
+            app.group().create(new GroupData()
+                    .withName(app.properties.getProperty("group.defaultName"))
+                    .withHeader(app.properties.getProperty("group.defaultHeader"))
+                    .withFooter(app.properties.getProperty("group.defaultFooter"))
+            );
         }
     }
 
