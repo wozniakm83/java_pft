@@ -57,12 +57,12 @@ public class ApplicationManager {
                     wd = new InternetExplorerDriver();
                 }
                 wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
-                wd.get(properties.getProperty("web.baseUrl"));
             } else {
                 DesiredCapabilities capabilities = new DesiredCapabilities();
                 capabilities.setBrowserName(browser);
                 wd = new RemoteWebDriver(new URL(properties.getProperty("selenium.server")), capabilities);
             }
+            wd.get(properties.getProperty("web.baseUrl"));
         }
         return wd;
     }

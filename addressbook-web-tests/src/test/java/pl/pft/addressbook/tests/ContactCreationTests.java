@@ -3,6 +3,7 @@ package pl.pft.addressbook.tests;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.thoughtworks.xstream.XStream;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pl.pft.addressbook.model.ContactData;
@@ -82,9 +83,14 @@ public class ContactCreationTests extends TestBase {
         return list.iterator();
     }
 
+    @BeforeMethod
+    public void ensurePreconditions(GroupData group) throws MalformedURLException {
+        app.group().createIfRequired(group);
+    }
+
     @Test(dataProvider = "validContactsFromJson")
     public void testContactCreation(ContactData contact) throws MalformedURLException {
-        app.group().createIfRequired(new GroupData().withName(app.properties.getProperty("group.defaultName")));
+        //app.group().createIfRequired(new GroupData().withName(app.properties.getProperty("group.defaultName")));
         app.goTo().homePage();
         Contacts before = app.db().contacts();
         app.contact().create(contact, true);

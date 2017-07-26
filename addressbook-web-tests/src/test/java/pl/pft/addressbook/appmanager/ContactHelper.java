@@ -113,14 +113,29 @@ public class ContactHelper extends HelperBase {
         return wd.findElements(By.cssSelector("#maintable input[name='selected[]']")).size();
     }
 
-    public void createIfRequired(ContactData contact, boolean creation) throws MalformedURLException {
+/*    public void createIfRequired(ContactData contact, boolean creation) throws MalformedURLException {
         new NavigationHelper(app).homePage();
         if(! isThereAContact()) {
             create(contact, creation);
         }
+    }*/
+
+    public void createIfRequired(ContactData contact, boolean creation) throws MalformedURLException {
+        new NavigationHelper(app).homePage();
+        if (app.db().contacts().size() == 0) {
+            app.goTo().homePage();
+            app.contact().create(new ContactData()
+                            .withFirstname(app.properties.getProperty("contact.defaultFirstname"))
+                            .withLastname(app.properties.getProperty("contact.defaultLastname"))
+                            .withAddress(app.properties.getProperty("contact.defaultAddress"))
+                            .withEmail(app.properties.getProperty("contact.defaultEmail"))
+                            .withHomePhone(app.properties.getProperty("contact.defaultHomePhone")),
+                    true);
+        }
     }
 
-    private Contacts contactCache = null;
+
+        private Contacts contactCache = null;
 
     public Contacts all() {
         if (contactCache != null) {

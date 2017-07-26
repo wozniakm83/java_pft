@@ -81,10 +81,18 @@ public class GroupHelper extends HelperBase {
         return wd.findElements(By.cssSelector("#content input[name='selected[]']")).size();
     }
 
-    public void createIfRequired(GroupData group) throws MalformedURLException {
+/*    public void createIfRequired(GroupData group) throws MalformedURLException {
         new NavigationHelper(app).groupPage();
         if(!isThereAGroup()) {
             create(group);
+        }
+    }*/
+
+    public void createIfRequired(GroupData group) throws MalformedURLException {
+        new NavigationHelper(app).groupPage();
+        if (app.db().groups().size() == 0) {
+            app.goTo().groupPage();
+            app.group().create(new GroupData().withName(app.properties.getProperty("group.defaultName")));
         }
     }
 

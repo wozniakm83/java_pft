@@ -15,21 +15,9 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class ContactDataTests extends TestBase {
 
     @BeforeMethod
-    public void ensurePreconditions() {
-        if(app.db().groups().size() == 0) {
-            app.goTo().groupPage();
-            app.group().create(new GroupData().withName(app.properties.getProperty("group.defaultName")));
-        }
-        if(app.db().contacts().size() == 0) {
-            app.goTo().homePage();
-            app.contact().create(new ContactData()
-                    .withFirstname(app.properties.getProperty("contact.defaultFirstname"))
-                    .withLastname(app.properties.getProperty("contact.defaultLastname"))
-                    .withAddress(app.properties.getProperty("contact.defaultAddress"))
-                    .withEmail(app.properties.getProperty("contact.defaultEmail"))
-                    .withHomePhone(app.properties.getProperty("contact.defaultHomePhone")),
-                    true);
-        }
+    public void ensurePreconditions(GroupData group, ContactData contact) throws MalformedURLException {
+        app.group().createIfRequired(group);
+        app.contact().createIfRequired(contact, true);
     }
 
     @Test
