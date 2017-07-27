@@ -5,7 +5,7 @@
         <classes>
             <class name="pl.pft.addressbook.tests.ContactCreationTests" />
             <class name="pl.pft.addressbook.tests.ContactDataTests" />
-            <!--<class name="pl.pft.addressbook.tests.ContactModificationTests" />-->
+            <class name="pl.pft.addressbook.tests.ContactModificationTests" />
             <class name="pl.pft.addressbook.tests.ContactDeletionTests" />
         </classes>
     </test>
