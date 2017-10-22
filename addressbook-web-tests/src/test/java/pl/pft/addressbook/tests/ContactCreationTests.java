@@ -8,7 +8,6 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pl.pft.addressbook.model.ContactData;
 import pl.pft.addressbook.model.Contacts;
-import pl.pft.addressbook.model.GroupData;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -99,7 +98,7 @@ public class ContactCreationTests extends TestBase {
                 before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
     }
 
-    @Test(enabled=false)
+    @Test
     public void testCurrentDir() {
         File currentDir = new File(".");
         System.out.println(currentDir.getAbsolutePath());
